@@ -1,0 +1,1262 @@
+/* ===== Базовые исправления ===== */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Исправлено: предотвращаем горизонтальный скролл */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer; /* Добавлено: курсор для кнопок */
+    border: none; /* Добавлено: убираем стандартные границы */
+    background: none; /* Добавлено: убираем стандартный фон */
+}
+
+/* Исправляем структуру кнопок с ссылками */
+.more-info-button a,
+.immersion-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 2vh 5.3vh;
+    text-decoration: none;
+}
+
+.more-info-button,
+.immersion-btn button {
+    padding: 0; /* Убираем внутренние отступы у кнопки */
+}
+
+/*--------------------- FONTS ------------------*/
+@font-face {
+    font-family: 'Archangelsk';
+    src: url(../fonts/Archangelsk-Regular.ttf);
+    font-display: swap; /* Добавлено: для производительности */
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(../fonts/Roboto-Regular.ttf);
+    font-display: swap; /* Добавлено: для производительности */
+}
+
+/*------------------- COLORS ------------------*/
+:root {
+    --color-yellow: #F8F200;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-blue: #52BEDC;
+    --color-dark-gray: #333333;
+    --color-gray: #777777;
+    --color-light-gray: #afafaf;
+}
+
+.yellow-back {
+    background-color: var(--color-yellow);
+}
+
+.yellow {
+    color: var(--color-yellow);
+}
+
+.black-back {
+    background-color: var(--color-black);
+}
+
+.black {
+    color: var(--color-black);
+}
+
+.white-back {
+    background-color: var(--color-white);
+}
+
+.white {
+    color: var(--color-white);
+}
+
+.blue {
+    color: var(--color-blue);
+}
+
+.blue-word {
+    color: var(--color-blue);
+    font-weight: 700;
+}
+
+.wrapper {
+    margin: 0 auto;
+}
+
+.spraying > img {
+    width: 100vw;
+    max-width: 100%; /* Исправлено: предотвращаем растяжение */
+    height: auto;
+    display: block;
+}
+
+/*--------------------------- HEADER -------------------*/
+@media screen and (max-width:1100px) {
+    .wrapper {
+        width: 85vw;
+        padding: 0 5vw; /* Добавлено: отступы на мобильных */
+    }
+    
+    .upper-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-left {
+        margin-top: 3px;
+        text-align: center;
+    }
+
+    .header-left img {
+        max-width: 95%;
+        height: auto;
+    }
+
+    .header-right {
+        margin-top: 7px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* Добавлено: равномерные отступы */
+    }
+    
+    .header-right > a {
+        padding-left: 0; /* Исправлено: убираем лишние отступы */
+        margin: 0 10px;
+    }
+}
+
+@media screen and (min-width:1100px) {
+    .wrapper {
+        width: 67vw;
+        padding: 0 2vw; /* Добавлено: отступы на десктопе */
+    }
+
+    .more-info {
+        width: min(32.5%, 600px); /* Исправлено: ограничиваем максимальную ширину */
+        min-width: 300px; /* Добавлено: минимальная ширина */
+    }
+
+    .upper-menu {
+        justify-content: space-between;
+    }
+
+    .header-left {
+        margin-top: 20px;
+    }
+
+    .header-right {
+        margin-top: 42px;
+        display: flex;
+        gap: 30px; /* Добавлено: равномерные отступы */
+    }
+    
+    .header-right > a {
+        padding-left: 0; /* Исправлено: убираем лишние отступы */
+    }
+}
+
+.first-window {
+    min-height: 100vh; /* Исправлено: гарантируем высоту */
+    position: relative;
+}
+
+.img-conteiner {
+    background-image: url(../images/man_with_guns.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    min-height: 100vh; /* Исправлено: гарантируем высоту */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.upper-menu {
+    display: flex;
+    flex-wrap: wrap; /* Добавлено: перенос на мобильных */
+}
+
+.social {
+    width: 32px;
+    height: 32px;
+    display: block; /* Исправлено: убираем лишние отступы */
+    transition: transform 0.15s ease; /* Улучшено: плавная анимация */
+}
+
+.social:hover {
+    transform: scale(1.2);
+}
+
+.info {
+    display: flex;
+    justify-content: flex-end; /* Исправлено: правильное выравнивание */
+    padding: 0 5%; /* Добавлено: отступы */
+}
+
+.more-info {
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0% 23%,10% 0, 100% 0%, 100% 77%, 90% 100%, 0 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.more-info-title {
+    font-family: 'Archangelsk';
+    font-size: clamp(2rem, 6.6vh, 4rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.1;
+    padding: 7.45vh 0 2.6vh 7.45vh;
+    margin: 0;
+}
+
+.more-info-button {
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.5vh, 1.5rem); /* Исправлено: адаптивный размер */
+    font-weight: 700;
+    line-height: 1.4;
+    align-self: flex-start;
+    padding: 0; /* Исправлено: убираем внутренние отступы */
+    margin: 0 0 7.45vh 7.45vh;
+    border: 0;
+    transition: background-color 0.25s ease;
+}
+
+.more-info-button:hover {
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+/* Добавляем стили для ссылки внутри кнопки */
+.more-info-button a {
+    display: inline-block;
+    padding: 2vh 5.3vh;
+    width: 100%;
+    height: 100%;
+}
+
+/*-------------------- NITE-CITY ------------------*/
+@media screen and (max-width:1100px) {
+    .nite-city-title {
+        text-align: center;
+        font-size: clamp(2rem, 6.77vh, 3rem); /* Исправлено: адаптивный размер */
+    }
+
+    .nite-city-item  {
+        margin: 0 auto;
+        max-width: 85vw;
+        font-size: clamp(1rem, 2.91vh, 1.25rem); /* Исправлено: адаптивный размер */
+    }
+
+    .nite-city-pict {
+        flex-direction: column;
+        gap: 20px; /* Добавлено: отступ между блоками */
+    }
+
+    .picture-left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Добавлено: отступ между изображениями */
+    }
+
+    .picture-right > img {
+        width: 85vw;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        clip-path: polygon(0% 12%,6% 0, 100% 0%, 100% 88%, 94% 100%, 0 100%);
+    }
+
+    .pict-small {
+        width: 85vw; /* Исправлено: полная ширина на мобильных */
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        clip-path: polygon(0% 12%,6% 0, 100% 0%, 100% 88%, 94% 100%, 0 100%); /* Исправлено: одинаковый clip-path */
+    }
+}
+
+@media screen and (min-width:1101px) {
+    .picture-left {
+        flex-direction: column;
+        gap: 40px; /* Добавлено: отступ между изображениями */
+    }
+
+    .picture-right > img {
+        width: 41vw;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        clip-path: polygon(0% 12%,6% 0, 100% 0%, 100% 88%, 94% 100%, 0 100%);
+    }
+
+    .pict-small {
+        width: 17.9vw;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        clip-path: polygon(0% 25%,10% 0, 100% 0%, 100% 75%, 90% 100%, 0 100%);
+    }
+    
+    .nite-city-title {
+        font-size: clamp(2.5rem, 6.77vh, 4rem); /* Исправлено: адаптивный размер */
+    }
+    
+    .nite-city-item {
+        max-width: 49.5vw;
+        font-size: clamp(1.125rem, 2.91vh, 1.5rem); /* Исправлено: адаптивный размер */
+    }
+}
+
+.nite-city {
+    margin-bottom: 7.45vh;
+    padding: 0 5%; /* Добавлено: боковые отступы */
+}
+
+.nite-city-title {
+    font-family: 'Archangelsk';
+    font-weight: 400;
+    line-height: 1.1;
+    margin-top: 7.45vh;
+    margin-bottom: 2.68vh;
+    max-width: 900px;
+    text-align: start;
+}
+
+.nite-city-item {
+    font-family: 'Roboto';
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 7.45vh;
+    text-align: justify;
+}
+
+.text {
+    opacity: 0.7;
+}
+
+.nite-city-pict {
+    display: flex;
+    align-items: flex-start; /* Исправлено: выравнивание по верху */
+    gap: 10%;
+    flex-wrap: wrap; /* Добавлено: перенос на мобильных */
+}
+
+.picture-left {
+    display: flex;
+    flex: 1; /* Добавлено: гибкая ширина */
+    min-width: 300px; /* Добавлено: минимальная ширина */
+}
+
+.picture-right {
+    flex: 1; /* Добавлено: гибкая ширина */
+    min-width: 300px; /* Добавлено: минимальная ширина */
+}
+
+/*----------------- FEEDBACK ------------------*/
+.feedback {
+    background-color: #000000;
+    position: relative;
+}
+
+.play-win {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Исправлено: фиксированный отступ */
+}
+
+.action-pict {
+    margin-top: 1.59vh;
+}
+
+.action-pict img {
+    width: 80px; /* Исправлено: фиксированная ширина */
+    height: auto;
+}
+
+.feedback-title {
+    font-family: 'Archangelsk';
+    font-size: clamp(2rem, 6.6vh, 3.5rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.1;
+    color: #ffffff;
+    text-align: start;
+}
+
+.feedback-item {
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.91vh, 1.25rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.4;
+    margin-top: 2.66vh;
+    color: #ffffff;
+    max-width: 700px;
+    text-align: justify;
+}
+
+@media (min-width: 750px) {
+    .feedback-content {
+        grid-template-columns: 1fr 1fr; 
+        gap: 40px; /* Добавлено: отступ между колонками */
+    }
+}
+
+@media (max-width: 750px) {
+    .feedback-content {
+        grid-template-columns: 1fr;
+        justify-items: center; 
+        gap: 40px; /* Добавлено: отступ между элементами */
+    }
+}
+
+.feedback-content {
+    display: grid;
+    justify-content: space-between;
+    align-items: start; /* Исправлено: выравнивание по верху */
+}
+
+.feedback-form {
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.91vh, 1.25rem); /* Исправлено: адаптивный размер */
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: 5vh; /* Исправлено: уменьшен отступ */
+    margin-bottom: 7.45vh;
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-name,
+.form-email {
+    width: 100%;
+}
+
+.form-name > input,
+.form-email > input {
+    border: 0;
+    border-bottom: 1px solid #777777;
+    background-color: #000000;
+    outline: 0;
+    width: 100%;
+    padding: 15px 0; /* Исправлено: улучшенные отступы */
+    font-family: 'Roboto';
+    font-size: clamp(0.875rem, 1.91vh, 1rem); /* Исправлено: адаптивный размер */
+    font-weight: 300;
+    line-height: 1.4;
+    color: #ffffff; /* Добавлено: цвет текста */
+    transition: border-color 0.3s ease; /* Добавлено: анимация */
+}
+
+.form-name > input:focus,
+.form-email > input:focus {
+    border-bottom-color: #52BEDC; /* Добавлено: состояние фокуса */
+}
+
+.form-email {
+    margin-top: 3.72vh;
+}
+
+.form-scrin {
+    border: 1px dashed #777777;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #777777;
+    padding: 30px 20px; /* Добавлено: внутренние отступы */
+    margin-top: 3.72vh;
+    cursor: pointer;
+    transition: border-color 0.3s ease; /* Добавлено: анимация */
+}
+
+.form-scrin:hover {
+    border-color: #52BEDC; /* Добавлено: hover эффект */
+}
+
+.form-scrin > p {
+    margin-top: 0.74vh;
+    font-size: 0.875rem; /* Исправлено: фиксированный размер */
+}
+
+.scrin-label {
+    font-family: 'Roboto';
+    font-size: clamp(0.875rem, 1.91vh, 1rem); /* Исправлено: адаптивный размер */
+    font-weight: 300;
+    color: #bcbbbb;
+    border-bottom: 1px solid #777777; /* Исправлено: уменьшена толщина */
+    margin-top: 4.15vh;
+    cursor: pointer;
+    padding-bottom: 5px;
+    transition: border-color 0.3s ease; /* Добавлено: анимация */
+}
+
+.scrin-label:hover {
+    border-bottom-color: #52BEDC; /* Добавлено: hover эффект */
+}
+
+.scrin-input {
+    display: none;
+}
+
+.form-btn {
+    margin-top: 3.72vh;
+}
+
+.feedback-btn {
+    border: 1px solid #F8F200;
+    background-color: #F8F200;
+    color: #000000; /* Добавлено: цвет текста */
+    height: 6.28vh;
+    min-height: 50px; /* Добавлено: минимальная высота */
+    font-family: 'Roboto';
+    font-size: clamp(0.875rem, 1.91vh, 1rem); /* Исправлено: адаптивный размер */
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 3.72vh;
+    cursor: pointer;
+    width: 100%; /* Исправлено: полная ширина */
+    transition: all 0.3s ease; /* Добавлено: анимация */
+}
+
+.feedback-btn:hover {
+    background-color: #333333; /* Исправлено: hover эффект */
+    color: #ffffff;
+    border-color: #333333;
+}
+
+.agreement {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start; /* Исправлено: выравнивание по верху */
+    margin-top: 1.59vh;
+    color: #afafaf;
+    gap: 10px; /* Добавлено: отступ */
+}
+
+.agreement > input {
+    margin-top: 2px; /* Исправлено: выравнивание */
+    flex-shrink: 0; /* Добавлено: предотвращаем сжатие */
+}
+
+.agreement > label {
+    font-family: 'Roboto';
+    font-size: clamp(0.75rem, 1.5vh, 0.875rem); /* Исправлено: адаптивный размер */
+    font-weight: 300;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.consoles {
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+@media (min-width: 750px) {
+    .consoles {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 749px) {
+    .consoles {
+        grid-template-columns: 1fr;
+        max-width: 400px; /* Ограничиваем ширину на мобильных */
+        margin: 0 auto;
+    }
+}
+
+.console {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    position: relative;
+}
+
+.console > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Исправлено: сохраняем пропорции */
+    display: block;
+}
+
+/*------------------------- IMMERSION -------------------------*/
+.immersion {
+    width: 100%;
+    position: relative;
+    padding: 7.45vh 0; /* Добавлено: вертикальные отступы */
+}
+
+@media (max-width: 1100px) {
+    .pic-down {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 5vh;
+    }
+
+    .pic-upper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pic-robo-girl {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+
+    .pic-hp,
+    .pic-group,
+    .pic-cyber {
+        width: auto;
+        height: 60px; /* Фиксированная высота для логотипов */
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 1100px) {
+    .pic-down {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-top: 5vh;
+    }
+
+    .pic-hp,
+    .pic-group,
+    .pic-cyber {
+        height: 70px; /* Фиксированная высота для логотипов */
+        width: auto;
+        object-fit: contain;
+    }
+}
+
+@media screen and (min-width: 595px) and (max-width:1100px) {
+    .right-screen {
+        width: 100%;
+        text-align: justify;
+    }
+
+    .immersion-list {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 790px) {
+    .pic-robo-girl {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+
+    .right-screen {
+        margin-top: 0;
+        margin-left: 2vw;
+    }
+
+    .immersion-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+}
+
+@media screen and (max-width: 789px) {
+    .immersion-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .pic-robo-girl {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+.immersion-content {
+    padding-bottom: 3%;
+}
+
+.left-screen {
+    margin-top: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.pic-robo-girl {
+    object-fit: cover;
+}
+
+.right-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.immersion-title {
+    font-family: 'Archangelsk';
+    font-size: clamp(2rem, 6.8vh, 4rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.1;
+    color: #000000;
+    text-align: left;
+}
+
+.immersion-item {
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.91vh, 1.25rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.4;
+    color: #000000;
+    text-align: justify;
+    max-width: 700px;
+}
+
+.immersion-list {
+    margin-top: 2.66vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Добавлено: отступ между пунктами */
+}
+
+.immersion-line {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Добавлено: отступ между иконкой и текстом */
+}
+
+.line-pict {
+    width: 24px; /* Фиксированная ширина */
+    height: 24px; /* Фиксированная высота */
+    flex-shrink: 0; /* Запрещаем сжатие */
+}
+
+.line-text {
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.91vh, 1.25rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.immersion-btn {
+    margin-top: 4.25vh;
+}
+
+.immersion-btn > button {
+    height: auto;
+    min-height: 50px;
+    border: 0;
+    transition: background-color 0.25s ease;
+    padding: 0; /* Исправлено: убираем внутренние отступы */
+}
+
+.immersion-btn > button:hover {
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+.immersion-text {
+    display: inline-block;
+    padding: 15px 40px;
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.91vh, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+    background-color: #000000;
+    color: #F8F200;
+    transition: all 0.3s ease;
+}
+
+.immersion-btn > button:hover .immersion-text {
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+/*----------------------- DESCRIPTION ----------------------*/
+.description {
+    width: 100%;
+}
+
+.description-content {
+    display: flex;
+    flex-wrap: wrap; /* Исправлено: перенос на мобильных */
+}
+
+@media screen and (max-width:550px) {
+    .description-content {
+        flex-direction: column;
+    }
+
+    .description-pict > img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .description-items {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 5vh 5vw;
+    }
+    
+    .platforms-title {
+        margin-top: 1.59vh;
+    }
+}
+
+@media screen and (min-width:551px) and (max-width:1100px) {
+    .description-content {
+        flex-direction: row;
+    }
+    
+    .description-pict {
+        flex: 1;
+        min-width: 300px;
+    }
+    
+    .description-pict > img {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        object-fit: cover;
+    }
+
+    .description-items {
+        flex: 1;
+        min-width: 300px;
+        padding: 5vh 3vw;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .platforms-title {
+        margin-top: 7.45vh;
+    }
+}
+
+@media screen and (min-width:1101px) {
+    .decription-title {
+        width: 100%;
+    }
+    
+    .description-pict {
+        flex: 1;
+    }
+    
+    .description-pict > img {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        object-fit: cover;
+    }
+
+    .description-items {
+        flex: 1;
+        padding: 5vh 3vw;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .platforms-title {
+        margin-top: 7.45vh;
+    }
+}
+
+.description-pict {
+    height: auto;
+}
+
+.decription-title {
+    font-family: 'Archangelsk';
+    font-size: clamp(1.5rem, 7vh, 3rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.description-set {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.set-title {
+    font-family: 'Roboto';
+    font-size: clamp(1.25rem, 3.55vh, 1.75rem); /* Исправлено: адаптивный размер */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #52BEDC;
+}
+
+.set-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.set-item > img {
+    width: 20px; /* Фиксированная ширина */
+    height: 20px; /* Фиксированная высота */
+    flex-shrink: 0;
+}
+
+.set-text {
+    font-family: 'Roboto';
+    font-size: clamp(1rem, 2.75vh, 1.25rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.platforms-title {
+    font-family: 'Roboto';
+    font-size: clamp(1.25rem, 3.55vh, 1.75rem); /* Исправлено: адаптивный размер */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #52BEDC;
+}
+
+.platforms {
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    align-items: center;
+    justify-items: start;
+}
+
+.stadia,
+.xbox,
+.PC,
+.ps-4 {
+    max-width: 120px;
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Добавлено: анимация */
+}
+
+.stadia:hover,
+.xbox:hover,
+.PC:hover,
+.ps-4:hover {
+    transform: scale(1.05); /* Добавлено: hover эффект */
+}
+
+/*-------------------- FOOTER ------------------------*/
+footer {
+    width: 100%;
+    margin-top: 7.45vh;
+}
+
+@media screen and (max-width:550px) {
+    .footer-item {
+        flex-direction: column-reverse;
+        margin-top: 15px;
+        gap: 30px;
+        padding: 0 5vw;
+    }
+
+    .footer-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-cyberpunk,
+    .footer-beard {
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .footer-right {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width:551px) {
+    .footer-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2vw;
+        flex-wrap: wrap;
+    }
+
+    .footer-cyberpunk,
+    .footer-beard {
+        width: 150px;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .footer-right {
+        display: flex;
+        gap: 30px;
+    }
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-cyberpunk,
+.footer-beard {
+    display: block;
+}
+
+.footer-right {
+    font-family: 'Roboto';
+    font-size: clamp(0.875rem, 1.91vh, 1rem); /* Исправлено: адаптивный размер */
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.footer-right > a {
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.footer-right > a:hover {
+    color: #F8F200;
+}
+
+.footer-right > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F8F200;
+    transition: width 0.3s ease;
+}
+
+.footer-right > a:hover::after {
+    width: 100%;
+}
+
+.caption {
+    font-family: 'Roboto';
+    font-size: clamp(0.75rem, 1.27vh, 0.875rem);
+    font-weight: 400;
+    line-height: 1.4;
+    height: 4.25vh;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 5%;
+    text-align: center;
+}
+
+/* ===== Дополнительные исправления ===== */
+
+/* Исправляем проблему с высотой изображений */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Добавляем доступность для фокуса */
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid #52BEDC;
+    outline-offset: 2px;
+}
+
+/* Улучшаем читаемость текста на черном фоне */
+.black-back .white {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Исправляем проблему с clip-path в Safari */
+@supports not (clip-path: polygon(0% 23%,10% 0, 100% 0%, 100% 77%, 90% 100%, 0 100%)) {
+    .more-info,
+    .picture-right > img,
+    .pict-small {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
+
+/* Добавляем плавные анимации */
+.more-info-button,
+.feedback-btn,
+.immersion-btn > button {
+    transition: all 0.3s ease;
+}
+
+/* Исправляем отображение checkbox */
+#checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #52BEDC;
+}
+
+/* Улучшаем адаптивность консолей */
+@media (max-width: 450px) {
+    .consoles {
+        grid-template-columns: 1fr;
+    }
+    
+    .console {
+        max-width: 250px;
+    }
+}
+
+
+
+
+
+.first-window {
+    
+    
+}
+
+.img-conteiner {
+    background-image: url(../images/man_with_guns.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+}
+
+
+header {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.upper-menu {
+    display: flex;
+}
+
+
+
+.social:hover {
+    transform: scale(1.2);
+    transition: 0.15s;
+}
+
+.header-right > a {
+    padding-left: 40px;
+    display: inline-block;
+}
+
+.info {
+    display: flex;
+    justify-content: right;
+    
+}
+
+.more-info {
+    display: flex;
+    flex-direction: column;
+    
+    clip-path: polygon(0% 23%,10% 0, 100% 0%, 100% 77%, 90% 100%, 0 100% );
+    @media (min-width:550px) {
+        margin-right: 16%;
+    }
+    
+    bottom: 0;
+    margin-top: -2vh;
+}
+
+.more-info-title {
+    font-family: 'Archangelsk';
+    font-size: 6.6vh;
+    font-weight: 400;
+    line-height: 100%;
+    /* margin: 7.45vh auto 2.6vh 7.45vh; */
+
+}
+
+.more-info-button {
+    font-family: 'Roboto';
+    font-size: 2.5vh;
+    font-weight: 700;
+    line-height: 4.25vh;
+    letter-spacing: 0%;
+    align-self: self-start;
+    padding: 2vh 5.3vh;
+    margin-left: 7.45vh;
+    border: 0;
+    transition: 0.25s;
+}
+
+.more-info-button:hover {
+    cursor: pointer;
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+
